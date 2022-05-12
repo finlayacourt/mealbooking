@@ -1,0 +1,15 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"request": "launch",
+			"name": "Start Server",
+			"type": "node",
+			"program": "${file}",
+			"cwd": "${workspaceFolder}",
+			"runtimeExecutable": "denon",
+			"runtimeArgs": ["start"],
+			"attachSimplePort": 9229
+		}
+	]
+}

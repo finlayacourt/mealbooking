@@ -1,0 +1,32 @@
+{
+	"$schema": "https://deno.land/x/denon@2.5.0/schema.json",
+	"scripts": {
+		"start": {
+			"cmd": "deno run main.ts",
+			"allow": ["net", "write", "read"],
+			"unstable": true,
+			"watch": true
+		},
+		"test": {
+			"cmd": "deno test .",
+			"allow": ["net", "write", "read"],
+			"watch": false
+		},
+		"fmt": {
+			"cmd": "dprint fmt",
+			"watch": false
+		},
+		"lint": {
+			"cmd": "deno lint",
+			"watch": false
+		},
+		"build": {
+			"cmd": "deno bundle main.ts dist/server.js",
+			"watch": false
+		},
+		"deploy": {
+			"cmd": "sh scripts/deploy.sh",
+			"watch": false
+		}
+	}
+}

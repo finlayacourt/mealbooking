@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "server"
+		},
+		{
+			"path": "client"
+		}
+	],
+	"settings": {
+		"deno.config": "./deno.json",
+		"deno.importMap": "./import_map.json",
+		"deno.enable": true
+	}
+}

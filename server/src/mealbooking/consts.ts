@@ -1,0 +1,5 @@
+export const MBS_URL = "https://www.mealbookings.cai.cam.ac.uk/"
+export const MBS_COOKIE_NAME = "Ucam-WebAuth-Session-S"
+export const MBS_COOKIE_VALUE = "Not-authenticated"
+export const RAVEN_URL = "https://raven.cam.ac.uk/auth/authenticate2.html"
+export const RAVEN_COOKIE_NAME = "Ucam-WLS-Session"

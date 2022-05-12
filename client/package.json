@@ -1,0 +1,15 @@
+{
+	"name": "client",
+	"type": "module",
+	"scripts": {
+		"start": "vite",
+		"build": "vite build",
+		"deploy": "vite build; scp -r dist/* fa404@shell.srcf.net:~/public_html/mealbooking"
+	},
+	"devDependencies": {
+		"@sveltejs/vite-plugin-svelte": "^1.0.0-next.34",
+		"@tsconfig/svelte": "^3.0.0",
+		"svelte": "^3.46.2",
+		"vite": "^2.7.13"
+	}
+}
