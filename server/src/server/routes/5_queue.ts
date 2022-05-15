@@ -46,6 +46,10 @@ export async function queue(request: Request) {
 		)
 	}
 
+	if (ticket.booked === null) {
+		throw new InvalidData("Already booked")
+	}
+
 	logger.info(`ticket queued (query: ${query}, username: ${username})`)
 
 	database.query(
