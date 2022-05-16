@@ -14,29 +14,33 @@
 
     async function request(url: string, method: string, body: Record<string, string>) {
         disabled = true
-        const res = await fetch(url, {
-            method,
-            headers: { "X-Api-Key": $session! }, 
-            body: JSON.stringify(body)
-        })
-        if (res.ok) {
-            const data = await res.json()
-            tickets.update($tickets => {
-                const i = $tickets!.findIndex(ticket => ticket.query === $current_ticket!.query)
-                $tickets![i] = data.ticket
-                return $tickets
+        try {
+            const res = await fetch(url, {
+                method,
+                headers: { "X-Api-Key": $session! }, 
+                body: JSON.stringify(body)
             })
-            close()
-        } else if (res.status === 401) {
-            const text = await res.text()
-            document.cookie = serialize_cookie("SESSION", "", { expires: new Date(0), path: "/", same_site: "strict", secure: true })
-            error.set(text)
-            route.set("login")
-        } else if (res.status < 400) {
-            const text = await res.text()
-            error.set(text)
-        } else {
-            error.set("Unknown server error")
+            if (res.ok) {
+                const data = await res.json()
+                tickets.update($tickets => {
+                    const i = $tickets!.findIndex(ticket => ticket.query === $current_ticket!.query)
+                    $tickets![i] = data.ticket
+                    return $tickets
+                })
+                close()
+            } else if (res.status === 401) {
+                const text = await res.text()
+                document.cookie = serialize_cookie("SESSION", "", { expires: new Date(0), path: "/", same_site: "strict", secure: true })
+                error.set(text)
+                route.set("login")
+            } else if (res.status < 400) {
+                const text = await res.text()
+                error.set(text)
+            } else {
+                error.set("Unknown server error")
+            }
+        } catch {
+            error.set("Unknown application error")
         }
     }
 

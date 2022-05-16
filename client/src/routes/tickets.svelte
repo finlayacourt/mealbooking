@@ -28,6 +28,11 @@
 			route.set("error")
 		}
 	})
+	.catch(error => {
+		console.error(error)
+		error.set("Unknown application error")
+		route.set("error")
+	})
 
 	function logout() {
 		document.cookie = serialize_cookie("SESSION", "", { expires: new Date(0), path: "/", same_site: "strict", secure: true })
