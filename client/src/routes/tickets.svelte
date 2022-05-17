@@ -5,6 +5,8 @@
     import { route, error, tickets, session } from "../state"
 	import { serialize_cookie } from "../_lib/cookie";
 
+	error.set(undefined)
+
 	fetch("api/tickets", {
 		headers: {
 			"X-Api-Key": $session!

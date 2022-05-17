@@ -1,5 +1,10 @@
 <script>
     import { error } from "../state"
+    import { onMount } from "svelte"
+    import { get } from "svelte/store"
+
+    let message = get(error)
+    error.set(undefined)
 </script>
 
 <style>
@@ -18,5 +23,5 @@
 
 <div>
     <h3>Something’s gone wrong!</h3>
-    <p>{$error}</p>
+    <p>{message}</p>
 </div>
